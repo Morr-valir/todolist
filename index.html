@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>To-Do List</title>
+    </head>
+
+    <body>
+        
+        <main id="app">       
+            <section class="todo-list">        
+                <h3>Liste de tâche</h3>
+                
+                <div class="all-todos">
+                    <div 
+                    class="single-todo"
+                    v-for="todo in todos" 
+                    @click="todo.active = !todo.active"
+                    :class="{done : todo.active}"
+                    >
+                        <p>{{todo.tache}}</p>
+                    </div>
+                </div>
+                <button class="clear" @click="todos = []" v-if="todos.length">Supprimer tout</button>
+                <input type="text" placeholder="Ajouter une tache" name="tache" v-model="Newtodo.tache">
+                <button class="add" @click="addtodo" type="button" >Ajouter</button>
+                <div class="instructions">
+                    Instructions:
+                    <ul>
+                        <li>‎Cliquez sur le texte à faire pour basculer entre terminé / annulé‎</li>
+                        <li>Utilisez le bouton Effacer tout pour supprimer tous les éléments‎</li>
+                        <li>‎Utiliser le champ de saisie pour ajouter de nouvelles choses à faire‎</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="scripts.js"></script>
+    </body>
+
+</html>
